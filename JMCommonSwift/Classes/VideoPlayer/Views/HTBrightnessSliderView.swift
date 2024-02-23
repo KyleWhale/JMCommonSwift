@@ -1,6 +1,6 @@
 //
 //  HTBrightnessSliderView.swift
-//  JMSwiftCommon
+//  JMCommonSwift
 //
 //  Created by James on 2023/6/26.
 //

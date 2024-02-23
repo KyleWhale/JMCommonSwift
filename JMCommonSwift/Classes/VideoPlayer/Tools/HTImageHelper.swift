@@ -19,12 +19,12 @@ public class HTImageHelper: NSObject {
     public static func imageWithName(_ name: String) -> UIImage? {
         
        var bundle: Bundle?
-       if let url = Bundle.main.url(forResource: "JMSwiftCommon.xcassets", withExtension: nil) {
+       if let url = Bundle.main.url(forResource: "JMCommonSwift.xcassets", withExtension: nil) {
            
            bundle = Bundle(url: url)
        }else {
            
-           bundle = HTImageHelper.frameworkBundle("JMSwiftCommon")
+           bundle = HTImageHelper.frameworkBundle("JMCommonSwift")
        }
        
        let image = UIImage.init(named: name, in: bundle, compatibleWith: nil)
