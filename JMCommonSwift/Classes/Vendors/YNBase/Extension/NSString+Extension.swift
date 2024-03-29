@@ -76,7 +76,13 @@ public extension NSString {
         }
         
         // 按天计
-        return "\(Int(interval) / (60 * 60 * 24))天:\((Int(interval) % (60 * 60 * 24)) / (60 * 60))小时:\( ((Int(interval) % (60 * 60 * 24)) % (60 * 60)) / 60 )分钟"
+        let var_day = Int(interval) / (60 * 60 * 24)
+        
+        let var_h = (Int(interval) % (60 * 60 * 24)) / (60 * 60)
+        
+        let var_m = ((Int(interval) % (60 * 60 * 24)) % (60 * 60)) / 60
+        
+        return "\(var_day)天:\(var_h)小时:\(var_m)分钟"
     }
     func yn_weekDetail() -> String {
         let weeks = self.components(separatedBy: ",")

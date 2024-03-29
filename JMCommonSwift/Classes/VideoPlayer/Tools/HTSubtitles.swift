@@ -29,7 +29,7 @@ public class HTSubtitles {
 //        // Parse string
 //        parsedPayload = try HTSubtitles.jm_parseSubRip(string)
 //    }
-//
+//    
 //    public init(subtitles string: String) throws {
 //        // Parse string
 //        parsedPayload = try HTSubtitles.jm_parseSubRip(string)
@@ -40,7 +40,7 @@ public class HTSubtitles {
     /// - Parameter time: Time
     /// - Returns: String if exists
 //    public func searchSubtitles(at time: TimeInterval) -> String? {
-//
+//        
 //        return HTSubtitles.jm_searchSubtitles(parsedPayload, time)
 //    }
     

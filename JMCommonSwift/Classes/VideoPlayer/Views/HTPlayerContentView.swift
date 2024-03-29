@@ -249,12 +249,6 @@ class HTPlayerContentView: HTPlayerBaseContentView {
         view.addTarget(self, action: #selector(jm_failButtonAction), for: .touchUpInside)
         return view
     }()
-
-//    private lazy var selectEpisodeView: HTClassViedoPleyarLandscapeSelectEpisodeView = {
-//        let view = HTClassViedoPleyarLandscapeSelectEpisodeView()
-//
-//        return view
-//    }()
     
     private lazy var fastForwardView: HTPleyFastForwardView = {
         let view = HTPleyFastForwardView()

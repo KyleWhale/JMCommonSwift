@@ -43,8 +43,7 @@ public class HTAVPlayer: HTPlayerBaseView {
                     
                     self.isPlaybackLikelyToKeepUp = playerItem.isPlaybackLikelyToKeepUp
                     
-                    if !self.isPlaybackLikelyToKeepUp && playerItem.isPlaybackBufferEmpty == true {
-                        
+                    if !self.isPlaybackLikelyToKeepUp && playerItem.isPlaybackBufferEmpty == false {
                         //print("正在卡顿")
                         
                         self.kaDunCount = self.kaDunCount + 1
@@ -139,19 +138,7 @@ private extension HTAVPlayer {
         guard let playerItem = playerItem else { return }
         
         totalDuration = TimeInterval(playerItem.duration.value) / TimeInterval(playerItem.duration.timescale)
-        
-        self.isPlaybackLikelyToKeepUp = playerItem.isPlaybackLikelyToKeepUp
-        
-        if !self.isPlaybackLikelyToKeepUp && playerItem.isPlaybackBufferEmpty == true {
-            
-            //print("正在卡顿")
-            
-            kaDunCount = kaDunCount + 1
-            DispatchQueue.main.async {
-                self.delegate?.didKaDunCount(in: self, count: self.kaDunCount)
-            }
-        }
-        
+                
         self.playStatus = HTPlayerStatus(rawValue: playerItem.status.rawValue) ?? .unknown
         
         if self.playStatus == .readyToPlay {
