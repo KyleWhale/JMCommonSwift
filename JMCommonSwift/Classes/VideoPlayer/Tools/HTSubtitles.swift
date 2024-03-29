@@ -29,7 +29,7 @@ public class HTSubtitles {
 //        // Parse string
 //        parsedPayload = try HTSubtitles.jm_parseSubRip(string)
 //    }
-//    
+//
 //    public init(subtitles string: String) throws {
 //        // Parse string
 //        parsedPayload = try HTSubtitles.jm_parseSubRip(string)
@@ -40,7 +40,7 @@ public class HTSubtitles {
     /// - Parameter time: Time
     /// - Returns: String if exists
 //    public func searchSubtitles(at time: TimeInterval) -> String? {
-//        
+//
 //        return HTSubtitles.jm_searchSubtitles(parsedPayload, time)
 //    }
     
@@ -298,7 +298,6 @@ extension HTSubtitles {
         if time < (subtitleArray[safe: subtitleIndex]?["from"] as? TimeInterval ?? 0.0) {
             subtitleIndex = 0
         }
-     
         if subtitleArray.count > subtitleIndex {
             
             let subtitleDict = subtitleArray[subtitleIndex]
@@ -355,7 +354,11 @@ extension HTSubtitles {
             }
         }
         
+        
         // 从当前索引开始查找匹配的字幕
+        if subtitleIndex >= subtitleArray.count {
+            subtitleIndex = subtitleArray.count - 1
+        }
         for index in subtitleIndex..<subtitleArray.count {
             let subtitleDict = subtitleArray[index]
             guard let fromTime = subtitleDict["from"] as? TimeInterval,
