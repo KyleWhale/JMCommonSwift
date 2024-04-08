@@ -123,12 +123,7 @@ class HTPlayerContentView: HTPlayerBaseContentView {
         view.addTarget(self, action: #selector(jm_shareButtonAction), for: .touchUpInside)
         return view
     }()
-    
-    private lazy var electricView: HTPlayerFullScreenElectricView = {
-        let view = HTPlayerFullScreenElectricView()
-        return view
-    }()
-    
+        
     private lazy var playCenterButton: UIButton = {
         let view = UIButton()
         view.isHidden = true
@@ -366,7 +361,6 @@ class HTPlayerContentView: HTPlayerBaseContentView {
        addSubview(fastForwardView)
         
        topToolView.addSubview(topToolGradualView)
-       topToolView.addSubview(electricView)
        topToolView.addSubview(backButton)
        topToolView.addSubview(titleLabel)
        //topToolView.addSubview(moreButton)
@@ -489,21 +483,9 @@ class HTPlayerContentView: HTPlayerBaseContentView {
            make.centerY.equalToSuperview()
            
        }
-       
-//       moreButton.snp.makeConstraints { make in
-//           make.right.equalTo(40)
-//           make.size.equalTo(40)
-//           make.centerY.equalToSuperview()
-//       }
-        
-        electricView.snp.makeConstraints { make in
-            make.right.equalTo(40)
-            make.size.equalTo(40)
-            make.centerY.equalToSuperview()
-        }
-        
+
         CCSubtitleButton.snp.makeConstraints { make in
-            make.right.equalTo(electricView.snp.left).offset(-12.fit)
+            make.right.equalTo(40)
             make.size.equalTo(40)
             make.centerY.equalToSuperview()
         }
@@ -775,25 +757,7 @@ class HTPlayerContentView: HTPlayerBaseContentView {
         
     }
     
-    func jm_reloadTopContentViewConstraints() {
-        
-        if screenState == .fullScreen {
-            
-            electricView.snp.remakeConstraints { make in
-                make.right.equalTo(-30)
-                make.size.equalTo(40)
-                make.centerY.equalToSuperview()
-            }
-        }
-        else {
-            
-            electricView.snp.remakeConstraints { make in
-                make.right.equalTo(40)
-                make.size.equalTo(40)
-                make.centerY.equalToSuperview()
-            }
-        }
-        
+    func jm_reloadTopContentViewConstraints() {        
         
     }
 
@@ -1349,7 +1313,6 @@ private extension HTPlayerContentView {
             nextEpisodeButton.isHidden = true
             selectEpisodeButton.isHidden = true
             
-            self.electricView.jm_cancelElectricTimer()
         }
         else {
             topToolView.snp.updateConstraints { make in
@@ -1384,7 +1347,6 @@ private extension HTPlayerContentView {
                 self.layoutIfNeeded()
             } completion: { _ in
                 self.jm_autoFadeOutTooView()
-                self.electricView.jm_autoElectricTimer()
             }
         }
         
@@ -1420,7 +1382,6 @@ private extension HTPlayerContentView {
             self.layoutIfNeeded()
         } completion: { _ in
             self.jm_cancelAutoFadeOutTooView()
-            self.electricView.jm_cancelElectricTimer()
         }
     }
 
