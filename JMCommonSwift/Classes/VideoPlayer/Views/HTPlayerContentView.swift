@@ -485,7 +485,7 @@ class HTPlayerContentView: HTPlayerBaseContentView {
        }
 
         CCSubtitleButton.snp.makeConstraints { make in
-            make.right.equalTo(40)
+            make.right.equalTo(-10)
             make.size.equalTo(40)
             make.centerY.equalToSuperview()
         }
@@ -757,8 +757,17 @@ class HTPlayerContentView: HTPlayerBaseContentView {
         
     }
     
-    func jm_reloadTopContentViewConstraints() {        
+    func jm_reloadTopContentViewConstraints() {
         
+        if screenState == .fullScreen {
+            CCSubtitleButton.snp.updateConstraints { make in
+                make.right.equalTo(-30.fit)
+            }
+        } else {
+            CCSubtitleButton.snp.updateConstraints { make in
+                make.right.equalTo(-10)
+            }
+        }
     }
 
    override func updateConfig() {

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JMCommonSwift'
-  s.version          = '0.3.9'
+  s.version          = '0.4.0'
   s.summary          = 'A short description of JMCommonSwift.'
 
 # This description is used to generate tags and improve search results.
