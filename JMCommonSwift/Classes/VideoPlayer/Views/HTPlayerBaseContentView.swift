@@ -41,6 +41,8 @@ public class HTPlayerBaseContentView:UIView {
     /// 是否锁屏
     var lockScreen:Bool = false
     
+    var capturedLockScreen:Bool = false
+    
     /// 是否已经去除了广告
     var removedAD:Bool = false
     

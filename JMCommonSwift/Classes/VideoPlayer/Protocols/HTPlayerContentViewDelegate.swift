@@ -46,6 +46,8 @@ protocol HTPlayerContentViewDelegate: AnyObject {
     
     func jm_didClickShareButton(in contentView: HTPlayerBaseContentView)
     
+    func jm_didClickScreenButton(in contentView: HTPlayerBaseContentView)
+    
     func jm_contentView(_ contentView: HTPlayerBaseContentView, subTitleLoadComplete parsedPayload: NSDictionary?)
     
     func jm_didClickFastForward(_ contentView: HTPlayerBaseContentView, fastForwardTime timeSecond: Double)

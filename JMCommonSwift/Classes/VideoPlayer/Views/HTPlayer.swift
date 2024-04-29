@@ -168,6 +168,11 @@ public class HTPlayer: UIView {
         contentView.setSelectEpisodeButtonTitle(title)
     }
     
+    public func jm_setScreenMirrorCapturedLockScreen( _ lock:Bool) {
+        
+        contentView.capturedLockScreen = lock
+    }
+    
     public var url: URL? {
         didSet {
             guard let url = url else { return }
@@ -340,6 +345,7 @@ public extension HTPlayer {
 
     func deviceOrientationDidChange() {
         guard !contentView.lockScreen else { return }
+        guard !contentView.capturedLockScreen else { return }
         guard config.rotateStyle != .none else { return }
         if config.rotateStyle == .small, isFullScreen { return }
         if config.rotateStyle == .fullScreen, !isFullScreen { return }
@@ -586,6 +592,7 @@ public extension HTPlayer {
     func play() {
         guard !isEnterBackground else { return }
         guard !isUserPause else { return }
+        guard !contentView.capturedLockScreen else { return }
         //guard let playerItem = playerItem else { return }
         /*
         guard playerItem.status == .readyToPlay else {
@@ -882,6 +889,11 @@ extension HTPlayer: HTPlayerContentViewDelegate {
     func jm_didClickShareButton(in contentView: HTPlayerBaseContentView) {
         
         delegate?.didClickShareButton(in: self)
+    }
+    
+    func jm_didClickScreenButton(in contentView: HTPlayerBaseContentView) {
+        
+        delegate?.didClickScreenButton(in: self)
     }
     
     func jm_didClickSubTitleSettingButton(in contentView: HTPlayerBaseContentView, fullState isFullState: Bool, button buttonView: UIButton, index indexForButton: Int) {

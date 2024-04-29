@@ -123,6 +123,12 @@ class HTPlayerContentView: HTPlayerBaseContentView {
         view.addTarget(self, action: #selector(jm_shareButtonAction), for: .touchUpInside)
         return view
     }()
+    
+    private lazy var screenButton: UIButton = {
+        let view = UIButton()
+        view.addTarget(self, action: #selector(jm_screenButtonAction), for: .touchUpInside)
+        return view
+    }()
         
     private lazy var playCenterButton: UIButton = {
         let view = UIButton()
@@ -366,6 +372,7 @@ class HTPlayerContentView: HTPlayerBaseContentView {
        //topToolView.addSubview(moreButton)
        topToolView.addSubview(CCSubtitleButton)
        topToolView.addSubview(shareButton)
+       topToolView.addSubview(screenButton)
        bottomToolView.addSubview(bottomToolGradualView)
        bottomToolView.addSubview(bottomContentView)
        bottomToolView.addSubview(bottomSafeView)
@@ -490,8 +497,14 @@ class HTPlayerContentView: HTPlayerBaseContentView {
             make.centerY.equalToSuperview()
         }
         
-        shareButton.snp.makeConstraints { make in
+        screenButton.snp.makeConstraints { make in
             make.right.equalTo(CCSubtitleButton.snp.left).offset(-8.fit)
+            make.size.equalTo(40)
+            make.centerY.equalToSuperview()
+        }
+        
+        shareButton.snp.makeConstraints { make in
+            make.right.equalTo(screenButton.snp.left).offset(-8.fit)
             make.size.equalTo(40)
             make.centerY.equalToSuperview()
         }
@@ -788,6 +801,7 @@ class HTPlayerContentView: HTPlayerBaseContentView {
        CCSubtitleButton.setImage(HTImageHelper.imageWithName("icon_subtitle_normal"), for: .normal)
        CCSubtitleButton.setImage(HTImageHelper.imageWithName("icon_subtitle_selected"), for: .selected)
        shareButton.sd_setImage(with: HTImageHelper.imageWithCount(124), for: .normal)
+       screenButton.sd_setImage(with: HTImageHelper.imageWithCount(177), for: .normal)
        playButton.sd_setImage(with: HTImageHelper.imageWithCount(180), for: .normal)
        playButton.sd_setImage(with: HTImageHelper.imageWithCount(181), for: .selected)
        fullButton.sd_setImage(with: HTImageHelper.imageWithCount(83), for: .normal)
@@ -1210,6 +1224,11 @@ class HTPlayerContentView: HTPlayerBaseContentView {
     func jm_shareButtonAction() {
         
         delegate?.jm_didClickShareButton(in: self)
+    }
+    
+    func jm_screenButtonAction() {
+        
+        delegate?.jm_didClickScreenButton(in: self)
     }
 
     func jm_playButtonAction(_ button: UIButton) {

@@ -37,6 +37,9 @@ public protocol HTPlayerDelegate: AnyObject {
     /// 点击分享
     func didClickShareButton(in player: HTPlayer)
     
+    /// 点击投屏
+    func didClickScreenButton(in player: HTPlayer)
+    
     /// 点击下一集
     func didClickPleyNextEpisodeButton(in player: HTPlayer)
     
